@@ -1,0 +1,65 @@
+note: read pg 55...
+* debugging
+gdb: logic
+valgrind: mem leaks
+
+think of gdb as repl
+aside: name mangling in c++
+- doesn't happen in c
+
+* gdb
+gdb -tui <prog_name>
+tui enable/disable: start/stop tui while running
+enter: redo last command
+ctrl-c: stop mid exec
+attach <pid>: attach to running proc
+gdb -tui -c core_file prog_name: can debug core files too
+
+r (run): w/ args if needed
+c (continue)
+
+** breakpoints
+b (break): func, line, filename:line
+disable (bp)
+enable (bp)
+clear (bp)
+
+p (print): var val
+set (var=val): set vars
+disp (display): var
+undisplay: stop displaying
+
+l (list): show 10 lines of src
+n (next): over
+s (step): into
+u (until): new (unvisited) line ex. out of loop
+o (next instruction): asm
+i (step instruction): asm
+f (finish): step out
+advance (fun name): go til fun called
+watch (var): break when changed :)
+rwatch: read
+awatch: rw
+
+bt (backstrace): stack frames
+f (frame): <n> jump to frame n
+
+i b (info breakpoints): print (bp) info
+i display: show disp nums
+info watch
+info reg
+info all-reg
+del (delete: bp/watch
+
+** windows
+fs (focus): SRC, CMD, REGS, ASM...prev, next
+
+** layout
+layout src
+layout asm
+layout split: src, asm, cmd
+layout reg
+tui reg general
+tui reg float
+tui reg system
+tui reg next: more, if present
