@@ -1,0 +1,10 @@
+* make
+** vars
+$<: filename.c (trigger)
+$@: filename.o (target)
+$*: filename
+** default script
+*** .c -> .o
+$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $*.c
+*** .o -> exe
+$(CC) $(LDFLAGS) object1.o object2.o $(LDLIBS)
