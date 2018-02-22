@@ -1,4 +1,6 @@
 note: read pg 55...
+pg. 65: good use of file creation script
+tshirt typing
 * debugging
 gdb: logic
 valgrind: mem leaks
@@ -14,6 +16,7 @@ enter: redo last command
 ctrl-c: stop mid exec
 attach <pid>: attach to running proc
 gdb -tui -c core_file prog_name: can debug core files too
+.gdbinit: write display fns (leverage c fns) pg 57
 
 r (run): w/ args if needed
 c (continue)
@@ -63,3 +66,28 @@ tui reg general
 tui reg float
 tui reg system
 tui reg next: more, if present
+
+** pointers and vars
+p *x: print val x points to
+p *x@12: print first 12 elems in arr x points to
+set $my_var = thing->sub_thing->hat: set new var to inspect
+p *$my_var@10
+$: last var evaluated
+
+* profiling
+-pg flag
+gprof prog > out_file
+* valgrind
+-g normal debug flag
+valgring prog
+
+valgrind --db-attach=yes prog
+- run debugger on errors
+valgrind --leak-check=full prog
+- mem leaks
+-- slower
+* prog vs lib
+-Dvar_name: #define via cli
+#ifdef var_name
+  int main() { test shit; }
+#endif
