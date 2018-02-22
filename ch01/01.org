@@ -1,3 +1,22 @@
+man operator: c operator precedence
+
+* linking
+#include: get header
+-l: link libs (implementation)
+-lc: implicit linking of std lib
+- order matters (specific -> general)
+
+* pkg-config
+pkg-config --libs <lib names>
+- link params
+pkg-config --cflags <lib names>
+- flag parms
+note: use *backquote* expansion to automatically use flags
+gcc `pkg-config --libs --cflags gsl libxml-2.0` -o file file.c
+
+static libs: compile-time linking (standalone)
+shared libs: runtime linking
+
 * make
 ** vars
 $<: filename.c (trigger)
