@@ -1,6 +1,5 @@
 note: read pg 55...
-pg. 65: good use of file creation script
-tshirt typing
+*** TODO: tshirt typing
 * debugging
 gdb: logic
 valgrind: mem leaks
@@ -86,7 +85,7 @@ valgrind --db-attach=yes prog
 valgrind --leak-check=full prog
 - mem leaks
 -- slower
-* prog vs lib
+* program vs library
 -Dvar_name: #define via cli
 #ifdef var_name
   int main() { test shit; }

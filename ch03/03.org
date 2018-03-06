@@ -1,0 +1,14 @@
+* TODO: terminal multiplexer
+- gnu screen vs tmux
+- emacs compatible leader key remap (C-a)
+* previous shell commands
+fc -l :: list prev commands
+pipe to file, then edit into script
+* makefile directories
+- pretend each line exec in different shell...
+cd some_dir && \
+do_a_thing
+* autotools
+makefile.am :: only thing you need to write
+pg. 65: good use of file creation script
+bookmark: pg. 69

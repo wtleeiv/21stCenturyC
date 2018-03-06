@@ -1,0 +1,49 @@
+# remove "autodemo" directory if it exists
+if [ -e autodemo ]; then rm -r autodemo; fi
+mkdir -p autodemo
+cd autodemo
+
+# create demo file to build
+cat > hello.c <<\
+"--------------"
+#include <stdio.h>
+int main(){ printf("Hi.\n"); }
+--------------
+
+# write Makefile.am
+## required by autotools
+cat > Makefile.am <<\
+"--------------"
+bin_PROGRAMS=hello
+hello_SOURCES=hello.c
+--------------
+
+# autoscan outputs configure.scan
+autoscan
+# edit configure.scan w/ sed
+## replace template strings w/ project info
+## add AM_INIT_AUTOMAKE line to use automake
+# save edited file as configure.ac
+sed -e 's/FULL-PACKAGE-NAME/hello/' \
+    -e 's/VERSION/1/' \
+    -e 's|BUG-REPORT-ADDRESS|/dev/null|' \
+    -e '10i\
+AM_INIT_AUTOMAKE' \
+    < configure.scan > configure.ac
+
+# these files are required by automake
+touch NEWS README AUTHORS ChangeLog
+
+# use configure.ac to generate required packaging files (configure, etc)
+## -i flag :: add system-req'd boilerplate
+autoreconf -iv
+# run configure
+./configure
+
+# make :: generate executable
+# sudo make install :: install software
+# sudo make uninstall :: uninstall software
+
+# generate packaged .tar file
+## everything user needs to unpack and install your software
+make distcheck

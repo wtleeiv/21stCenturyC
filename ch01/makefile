@@ -1,4 +1,4 @@
-P=getenv
+P=hello
 OBJECTS=
 CFLAGS= -g -Wall
 LDLIBS=
